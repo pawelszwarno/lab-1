@@ -27,17 +27,19 @@ def fib(n:int):
     Returns:
     np.ndarray: wektor n pierwszych wyrazów ciągu Fibonnaciego.
     """
-    lista = []
+    array = np.array([])
     if n >=0:
-        if n == 0:
-            lista.append(0)
-        elif n == 1:
-            lista.append(1)
-        else:
-            lista.append(lista[-1] + lista[-2])
+        for i in range(n):
+            if i == 0:
+                array = np.append(array, np.array([0]))
+            elif i == 1:
+                array = np.append(array, np.array([1]))
+            else:
+                array = np.append(array, np.array([array[-1] + array[-2]]))
+        return array
+    else:
+        return None
 
-
-    return None
 
 def matrix_calculations(a:float):
     """Funkcja zwraca wartości obliczeń na macierzy stworzonej 
