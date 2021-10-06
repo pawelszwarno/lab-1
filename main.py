@@ -55,7 +55,10 @@ def matrix_calculations(a:float):
     (Minv, Mt, Mdet) - opis parametrów w zadaniu 4.
     """
     M = np.array([[a, 1, -a], [0, 1, 1], [-a, a, 1]])
-    Minv = np.linalg.inv(M)
+    try:
+        Minv = np.linalg.inv(M)
+    except:
+        Minv = NaN
     Mt = np.transpose(M)
     Mdet = np.linalg.det(M)
     return Minv, Mt, Mdet
