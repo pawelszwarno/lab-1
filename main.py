@@ -1,5 +1,6 @@
 import math
 import numpy as np
+from numpy.core.numeric import NaN
 
 def cylinder_area(r:float,h:float) -> float:
     """Obliczenie pola powierzchni walca. 
@@ -31,15 +32,15 @@ def fib(n:int):
     if n >=0:
         for i in range(n):
             if i == 0:
-                array = np.append(array, np.array([0]))
+                array = np.append(array, np.array([0])) # do obiektu typu np.array dodajemy 0
             elif i == 1:
-                array = np.append(array, np.array([1]))
+                array = np.append(array, np.array([1])) # do obiektu typu np.array dodajemy 1
             else:
-                array = np.append(array, np.array([array[-1] + array[-2]]))
+                array = np.append(array, np.array([array[-1] + array[-2]])) # do obiektu typu np.array dodajemy sumę jego dwóch ostatnich elementów
         return array
     else:
         return None
-
+print(fib(5))
 
 def matrix_calculations(a:float):
     """Funkcja zwraca wartości obliczeń na macierzy stworzonej 
@@ -53,7 +54,11 @@ def matrix_calculations(a:float):
     touple: krotka zawierająca wyniki obliczeń 
     (Minv, Mt, Mdet) - opis parametrów w zadaniu 4.
     """
-    return None
+    M = np.array([[a, 1, -a], [0, 1, 1], [-a, a, 1]])
+    Minv = np.linalg.inv(M)
+    Mt = np.transpose(M)
+    Mdet = np.linalg.det(M)
+    return Minv, Mt, Mdet
 
 def custom_matrix(m:int, n:int):
     """Funkcja zwraca macierz o wymiarze mxn zgodnie 
@@ -66,4 +71,12 @@ def custom_matrix(m:int, n:int):
     Returns:
     np.ndarray: macierz zgodna z opisem z zadania 7.
     """
-    return None
+
+    cust_matrix = np.zeros((m,n))
+    for i in range(m):
+        for j in range(n):
+            if i > j:
+                cust_matrix[i,j] = i
+            else:
+                cust_matrix[i,j] = j
+    return cust_matrix
