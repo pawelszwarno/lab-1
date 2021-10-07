@@ -19,7 +19,7 @@ def cylinder_area(r:float,h:float) -> float:
             return 2*math.pi*r*r + 2*math.pi*r*h
         else:
             return NaN
-    except TypeError:
+    except TypeError: # jeśli zostanie podany zły typ danych to funkcja zwróci NaN
         return NaN
 
 def fib(n:int):
@@ -32,19 +32,21 @@ def fib(n:int):
     Returns:
     np.ndarray: wektor n pierwszych wyrazów ciągu Fibonnaciego.
     """
-    array = np.array([])
-    if n >=0:
-        for i in range(n):
-            if i == 0:
-                array = np.append(array, np.array([0])) # do obiektu typu np.array dodajemy 0
-            elif i == 1:
-                array = np.append(array, np.array([1])) # do obiektu typu np.array dodajemy 1
-            else:
-                array = np.append(array, np.array([array[-1] + array[-2]])) # do obiektu typu np.array dodajemy sumę jego dwóch ostatnich elementów
-        return array
-    else:
+    array = np.array([]) # tworzenie pustego obiektu typu numpy.array
+    try:
+        if n >=0:
+            for i in range(n):
+                if i == 0:
+                    array = np.append(array, np.array([0])) # do obiektu typu numpy.array dodajemy 0
+                elif i == 1:
+                    array = np.append(array, np.array([1])) # do obiektu typu numpy.array dodajemy 1
+                else:
+                    array = np.append(array, np.array([array[-1] + array[-2]])) # do obiektu typu numpy.array dodajemy sumę jego dwóch ostatnich elementów
+            return array
+        else:
+            return None
+    except TypeError:
         return None
-print(fib(5))
 
 def matrix_calculations(a:float):
     """Funkcja zwraca wartości obliczeń na macierzy stworzonej 
