@@ -63,7 +63,7 @@ def matrix_calculations(a:float):
     try:
         Minv = np.linalg.inv(M) #utworzenie macierzy odwrotnej, jeśli to możliwe
     except:
-        Minv = NaN
+        Minv = NaN # jeśli utworzenie macierzy okaże się, że nie da się utworzyć macierzy
     Mt = np.transpose(M)
     Mdet = np.linalg.det(M)
     return Minv, Mt, Mdet
@@ -80,7 +80,7 @@ def custom_matrix(m:int, n:int):
     np.ndarray: macierz zgodna z opisem z zadania 7.
     """
 
-    cust_matrix = np.zeros((m,n))
+    cust_matrix = np.zeros((m,n)) # tworzymy macierz o wymiarach m na n wypełnioną zerami, aby móc jej pola uzupełnić właściwymi wartościami
     for i in range(m):
         for j in range(n):
             if i > j:
