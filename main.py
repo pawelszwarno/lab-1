@@ -1,6 +1,5 @@
 import math
 import numpy as np
-import sys
 from numpy.core.numeric import NaN
 
 def cylinder_area(r:float,h:float) -> float:
@@ -19,7 +18,7 @@ def cylinder_area(r:float,h:float) -> float:
             return 2*math.pi*r*r + 2*math.pi*r*h
         else:
             return NaN
-    except TypeError: # jeśli zostanie podany zły typ danych to funkcja zwróci NaN
+    except: # jeśli zostanie podany zły typ danych to funkcja zwróci NaN
         return NaN
 
 def fib(n:int):
@@ -45,7 +44,7 @@ def fib(n:int):
             return array
         else:
             return None
-    except TypeError:
+    except:
         return None
 
 def matrix_calculations(a:float):
@@ -62,7 +61,7 @@ def matrix_calculations(a:float):
     """
     M = np.array([[a, 1, -a], [0, 1, 1], [-a, a, 1]])
     try:
-        Minv = np.linalg.inv(M)
+        Minv = np.linalg.inv(M) #utworzenie macierzy odwrotnej, jeśli to możliwe
     except:
         Minv = NaN
     Mt = np.transpose(M)
