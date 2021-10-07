@@ -1,5 +1,6 @@
 import math
 import numpy as np
+import sys
 from numpy.core.numeric import NaN
 
 def cylinder_area(r:float,h:float) -> float:
@@ -13,10 +14,13 @@ def cylinder_area(r:float,h:float) -> float:
     Returns:
     float: pole powierzchni walca 
     """
-    if r <= 0 or h <= 0:
-        return None
-    else:
-        return 2*math.pi*r*r + 2*math.pi*r*h
+    try:
+        if r > 0 and h > 0:
+            return 2*math.pi*r*r + 2*math.pi*r*h
+        else:
+            return NaN
+    except TypeError:
+        return NaN
 
 def fib(n:int):
     """Obliczenie pierwszych n wyrazów ciągu Fibonnaciego. 
