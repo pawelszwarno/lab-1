@@ -84,7 +84,7 @@ def custom_matrix(m:int, n:int):
     for i in range(m):
         for j in range(n):
             if i > j:
-                cust_matrix[i,j] = i
+                cust_matrix[i,j] = i 
             else:
                 cust_matrix[i,j] = j
     return cust_matrix
