@@ -60,13 +60,13 @@ def matrix_calculations(a:float):
     (Minv, Mt, Mdet) - opis parametrów w zadaniu 4.
     """
     M = np.array([[a, 1, -a], [0, 1, 1], [-a, a, 1]])
-    try:
-        Minv = np.linalg.inv(M) #utworzenie macierzy odwrotnej, jeśli to możliwe
-    except:
-        Minv = NaN # jeśli utworzenie macierzy okaże się, że nie da się utworzyć macierzy
     Mt = np.transpose(M)
     Mdet = np.linalg.det(M)
-    return Minv, Mt, Mdet
+    try:
+        Minv = np.linalg.inv(M) #utworzenie macierzy odwrotnej, jeśli to możliwe
+        return Minv, Mt, Mdet
+    except:
+        return NaN, Mt, Mdet
 
 def custom_matrix(m:int, n:int):
     """Funkcja zwraca macierz o wymiarze mxn zgodnie 
@@ -79,12 +79,14 @@ def custom_matrix(m:int, n:int):
     Returns:
     np.ndarray: macierz zgodna z opisem z zadania 7.
     """
-
-    cust_matrix = np.zeros((m,n)) # tworzymy macierz o wymiarach m na n wypełnioną zerami, aby móc jej pola uzupełnić właściwymi wartościami
-    for i in range(m):
-        for j in range(n):
-            if i > j:
-                cust_matrix[i,j] = i 
-            else:
-                cust_matrix[i,j] = j
-    return cust_matrix
+    try:
+        cust_matrix = np.zeros((m,n)) # tworzymy macierz o wymiarach m na n wypełnioną zerami, aby móc jej pola uzupełnić właściwymi wartościami
+        for i in range(m):
+            for j in range(n):
+                if i > j:
+                    cust_matrix[i,j] = i 
+                else:
+                    cust_matrix[i,j] = j
+        return cust_matrix
+    except:
+        return None
